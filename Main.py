@@ -134,11 +134,14 @@ def app():
                 st.pyplot()
 
         #  display all previous wordclouds; draft
+        all_clouds = []
+        for files in os.listdir("clouds"):
+            print(files)
+            all_clouds.append("clouds/"+files)
+
         with st.container():
-            for files in os.listdir("clouds"):
-                print(files)
-                img = Image.open("clouds/"+files)
-                st.image(img, width=300)
+            st.title("Collation of Previous WordClouds")
+            st.image(all_clouds, width=300)
 
     else:
         with st.form("API_Key_Form"):
