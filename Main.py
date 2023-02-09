@@ -42,7 +42,7 @@ def app():
             region_list = ["Asia", "Europe"]
 
             nouns_list = [
-                "Singapore University of Technology and Design (SUTD)", "university education", "engineering", "STEM", "design thinking"]
+                "Singapore University of Technology and Design (SUTD)", "university education", "engineering", "STEM", "design thinking", "Humanities", "Science", "Technologies", "COVID"]
             eng_poets_list = ["Shakespeare", "Seamus Heaney", "Edgar Allan Poe", "William Blake", "Robert Frost",
                               "Emily Dickinson", "Oscar Wilde", "George Bernard Shaw", "William Wordsworth", "Sylvia Plath"]
 
