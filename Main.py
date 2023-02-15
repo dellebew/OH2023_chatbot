@@ -26,7 +26,6 @@ def update_api_key(inp: str):
 
 
 def app():
-
     if st.session_state.api_key:
         col1, col2 = st.columns(2)
 
@@ -64,11 +63,7 @@ def app():
                 "Select a region", region_list)
 
             #  selected region will release the available choices
-            # if region_option == "Asia":
-            #     poet_option = st.radio("Available Genre", options=[
-            #         "Haiku", "Syair", "Yadu", "Sijo", "Kural"])  # Japan, Malaysia, Myanmar, Korea, India & Sri Lanka
             if region_option == "Asia":
-                # Japan, Malaysia, Myanmar, Korea, India & Sri Lanka
                 poet_option = st.radio("Available Genre", options=asia_genres)
             elif region_option == "Europe":
                 poet_option = st.radio(
@@ -136,24 +131,6 @@ def app():
                     f"clouds/wordcloud{idx}{choosen}.png", bbox_inches='tight', dpi=300)
                 plt.show()
                 st.pyplot()
-
-        #  display all previous wordclouds; draft
-        all_clouds = []
-        all_texts = []
-        for files in os.listdir("clouds"):
-            print(files)
-            all_clouds.append("clouds/"+files)
-        for f in os.listdir("texts"):
-            # print(f)
-            all_texts.append("texts/"+f)
-
-        with st.container():
-            st.title("Collation of Previous WordClouds")
-            st.image(all_clouds, width=300)
-        # with st.expander("See Poem"):
-        #     st.write(all_texts)
-
-            #  for each wordcloud in all_clouds, creat a tooltip to display text accompanying the wordcloud
 
     else:
         with st.form("API_Key_Form"):
