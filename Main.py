@@ -102,6 +102,7 @@ def app():
                 max_chars=150
             )
 
+            # backend processes
             # submit button
             report_text = ""
             if st.button("Pen my poem!"):
@@ -123,11 +124,14 @@ def app():
                 plt.tight_layout(pad=0)
                 plt.imshow(wdcloud)
                 plt.axis("off")
-
-                # save images
                 idx = str(rand.randint(0, 1000))
                 conti = ['a', 'b', 'c', 'd', 'e', 'f']
                 choosen = rand.choice(conti)
+                # save text
+                cloudtext = open(f"texts/wordcloud{idx}{choosen}.txt", 'w')
+                cloudtext.write(text)
+                cloudtext.close()
+                # save images
                 plt.savefig(
                     f"clouds/wordcloud{idx}{choosen}.png", bbox_inches='tight', dpi=300)
                 plt.show()
@@ -135,13 +139,21 @@ def app():
 
         #  display all previous wordclouds; draft
         all_clouds = []
+        all_texts = []
         for files in os.listdir("clouds"):
             print(files)
             all_clouds.append("clouds/"+files)
+        for f in os.listdir("texts"):
+            # print(f)
+            all_texts.append("texts/"+f)
 
         with st.container():
             st.title("Collation of Previous WordClouds")
             st.image(all_clouds, width=300)
+        # with st.expander("See Poem"):
+        #     st.write(all_texts)
+
+            #  for each wordcloud in all_clouds, creat a tooltip to display text accompanying the wordcloud
 
     else:
         with st.form("API_Key_Form"):
