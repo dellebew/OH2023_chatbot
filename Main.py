@@ -34,6 +34,9 @@ def app():
             return st.session_state.pred.model_prediction(input=str(inp).strip(), api_key=st.session_state.api_key)
 
         with col1:
+
+            ### SETUPS ###
+
             # Setting up the Title
             st.title("Give our poet a style and topic")
 
@@ -58,6 +61,10 @@ def app():
             # available options for poets and nouns
             region_list = ["Asia", "Europe"]
 
+            ### End of Setups ###
+
+            ### Start of Web APP ###
+
             # with st.sidebar:
             region_option = st.selectbox(
                 "Select a region", region_list)
@@ -73,7 +80,8 @@ def app():
             noun_option = st.multiselect("Available Nouns", nouns_list)
             noun_option
 
-            if st.button("Confirm choices"):  # finalised decision
+            # finalised decision
+            if st.button("Confirm choices"):
                 # string the list
                 filtered = ""
                 for noun in noun_option:
@@ -84,6 +92,7 @@ def app():
                         filtered = filtered[:-1]
                     # st.write(filtered) # debug
 
+                # Write to textbox
                 st.session_state.textbox = "Write a " + poet_option + " style"\
                     " poem about the benefits of " + filtered + " in English"
 
@@ -110,7 +119,7 @@ def app():
                     restart = st.button("Re-enter API Key",
                                         on_click=update_api_key(""))
 
-            # wordcloud
+            # Generate wordcloud and text
             st.set_option("deprecation.showPyplotGlobalUse", False)
             text = report_text
             if text:

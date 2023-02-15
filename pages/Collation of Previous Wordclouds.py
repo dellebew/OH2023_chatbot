@@ -7,7 +7,7 @@ from PIL import Image
 
 
 if st.session_state.api_key:
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)  # 2 columns layout
     #  for display all previous wordclouds; draft
     all_clouds = []
     all_texts = []
@@ -17,6 +17,8 @@ if st.session_state.api_key:
     for f in os.listdir("texts"):
         # print(f)
         all_texts.append("texts/"+f)
+
+    # zip for reference and clarity
     cloudAtexts = zip(all_clouds, all_texts)
 
     helper = list(cloudAtexts)
