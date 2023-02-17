@@ -24,13 +24,13 @@ if st.session_state.api_key:
     helper = list(cloudAtexts)
     with col1:
         for i in range(0, len(helper), 2):
-            st.image(helper[i][0], width=500)
+            st.image(helper[i][0], width=None)
             with st.expander("See Poem"):
                 poem = open(helper[i][1], "r")
                 st.write(poem.read())
     with col2:
         for i in range(1, len(helper), 2):
-            st.image(helper[i][0], width=500)
+            st.image(helper[i][0], width=None)
             with st.expander("See Poem"):
                 poem = open(helper[i][1], "r")
                 st.write(poem.read())

@@ -126,8 +126,8 @@ def app():
             st.set_option("deprecation.showPyplotGlobalUse", False)
             text = report_text
             if text:
-                wdcloud = WordCloud().generate(text)
-                plt.figure(figsize=(10, 5), facecolor="k")
+                wdcloud = WordCloud(background_color="white").generate(text)
+                plt.figure(figsize=(10, 5))
                 plt.tight_layout(pad=0)
                 plt.imshow(wdcloud)
                 plt.axis("off")
