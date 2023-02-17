@@ -49,4 +49,5 @@ class GeneralModel:
         # Setting the OpenAI API key got from the OpenAI dashboard
         set_openai_key(api_key)
         output = self.query(poem.format(input = input))
+        print(output)
         return output

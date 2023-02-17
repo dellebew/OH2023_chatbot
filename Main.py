@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import random as rand
 import os
 from PIL import Image
+import re
 # from model import GeneralModel
 
 # checks if api key is valid
@@ -113,7 +114,9 @@ def app():
                 try:
                     with st.spinner(text="In progress"):
                         report_text = process_prompt(st.session_state.textbox)
-                        st.markdown(report_text)
+                        pattern = re.compile(r"(?<!\n)\n(?!\n)")
+                        report_text_final = pattern.sub('\n\n', report_text)
+                        st.markdown(report_text_final)
                 except Exception as e:
                     st.error("Error: " + str(e))
                     restart = st.button("Re-enter API Key",
